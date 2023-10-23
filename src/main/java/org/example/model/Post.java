@@ -3,16 +3,24 @@ package org.example.model;
 public class Post {
     private long id;
     private String content;
+    private boolean removed;
 
     public Post() {
     }
 
-
     public Post(long id, String content) {
         this.id = id;
         this.content = content;
+        this.removed = false;
     }
 
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
+    }
     public long getId() {
         return id;
     }
