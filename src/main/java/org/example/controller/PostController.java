@@ -1,7 +1,9 @@
 package org.example.controller;
 
+import org.example.dto.PostDTO;
 import org.example.model.Post;
 import org.example.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,22 +13,23 @@ import java.util.List;
 public class PostController {
     private final PostService service;
 
+    @Autowired
     public PostController(PostService service) {
         this.service = service;
     }
 
     @GetMapping
-    public List<Post> all() {
+    public List<PostDTO> all() {
         return service.all();
     }
 
     @GetMapping("/{id}")
-    public Post getById(@PathVariable long id) {
+    public PostDTO getById(@PathVariable long id) {
         return service.getById(id);
     }
 
     @PostMapping
-    public Post save(@RequestBody Post post) {
+    public PostDTO save(@RequestBody PostDTO post) {
         return service.save(post);
     }
 
